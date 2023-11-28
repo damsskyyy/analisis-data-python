@@ -6,9 +6,6 @@ import seaborn as sns
 from io import BytesIO
 
 st.title('Proyek Analisis Data: Bike-Sharing-dataset')
-st.markdown('- Nama: Damar Bayu Krisna')
-st.markdown('- Email: damarbkrisna@gmail.com')
-st.markdown('- Id Dicoding: 1RXY09961ZVM')
 
 # Mulai menyiapkan data
 day_df = pd.read_csv("https://raw.githubusercontent.com/damsskyyy/analisis-data-python/main/Bike-sharing-dataset/day.csv")
@@ -28,13 +25,12 @@ weather = ['temp', 'hum', 'windspeed', 'cnt']
 weather_corr = hour_df[weather].corr()
 
 # Visualisasi Pertanyaan 1
-st.header('Pertanyaan 1: Pola Penggunaan Sepeda Berdasarkan Jam/Hari dalam Seminggu')
+st.header('Grafik Rata-rata Peminjaman Sepeda per Hari dalam Seminggu')
 # Visualisasi Grafik 1 
-st.subheader('Grafik Rata-rata Peminjaman Sepeda per Hari dalam Seminggu')
 st.bar_chart(day_cnt.set_index('weekday'))
 
 # Visualisasi Grafik 2
-st.subheader('Grafik Rata-rata Peminjaman Sepeda per Jam dalam Seminggu')
+st.header('Grafik Rata-rata Peminjaman Sepeda per Jam dalam Seminggu')
 plt.figure(figsize=(12, 8))
 sns.barplot(x=hour_table.columns, y=hour_table.mean(axis=0), palette='viridis')
 plt.xlabel('Jam (hr)')
@@ -49,9 +45,7 @@ st.image(buffer_bar)
 
 
 # Visualisasi Pertanyaan 2
-st.header('Pertanyaan 2: Korelasi Cuaca dengan Jumlah Pengguna Sepeda')
-st.subheader('Tabel Korelasi Cuaca dengan Jumlah Pengguna Sepeda')
-st.write(weather_corr)
+st.header('Tabel Korelasi Cuaca dengan Jumlah Pengguna Sepeda')
 
 # Menggunakan Matplotlib untuk scatter plot
 fig, ax = plt.subplots()
